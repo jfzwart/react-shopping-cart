@@ -6,15 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Navbar = () => {
     return(
-        <nav className="navbar navbar-expand-sm navbar-light navbar-lewagon">
+        <nav className="navbar navbar-expand-sm navbar-light navbar-shopping">
             <Link to="/" className="navbar-brand">Shopping</Link>
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item active"><Link className="nav-link" to="/">Shop</Link></li>
-                    <li className="nav-item"><Link className="nav-link" to="/cart">My cart</Link></li>
-                    <li className="nav-item"><Link className="nav-link" to="/cart"><FontAwesomeIcon icon={faShoppingCart} /></Link></li>
+                    <li className="nav-item"><Link className="nav-link" to="/cart">My cart<FontAwesomeIcon icon={faShoppingCart} /></Link></li>
                 </ul>
             </div>
         </nav>

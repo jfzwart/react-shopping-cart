@@ -19,7 +19,7 @@ class Home extends React.Component {
                     <img src={item.img} alt={item.title} />
                     <span className="card-title">{item.title}</span>
                     <span 
-                        to="/" className="btn-floating red" 
+                        className="card-plusbutton" 
                         onClick={()=>{this.handleClick(item.id)}}>
                         <FontAwesomeIcon icon={faPlus} />
                     </span>

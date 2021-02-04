@@ -18,7 +18,7 @@ class Home extends React.Component {
                     <button 
                         className="btn btn-success" 
                         onClick={()=>{this.handleClick(item.id)}}>
-                        Add to basket
+                        Add to cart
                     </button>
                 </div>
                 <div className="card-content">

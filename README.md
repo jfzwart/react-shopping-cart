@@ -1,6 +1,6 @@
-Demo of the shopping cart is available on: https://keen-kalam-d97dac.netlify.app/
+Demo of the shopping cart is available on: [https://keen-kalam-d97dac.netlify.app/](https://keen-kalam-d97dac.netlify.app/)
  
-Project runs in http://localhost:3000 after running 'npm start' in terminal
+Project runs in [http://localhost:3000] after running 'npm start' in terminal
  
 The shopping cart contains the following functionalities:
  

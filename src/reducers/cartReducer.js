@@ -16,8 +16,9 @@ const initState = {
         {id:6,title:'Pepper', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.",price:10,img: Item6}
     ],
     addedItems:[],
-    total: 0
-
+    totalQuantity: 0,
+    total: 0,
+    discount: 0
 }
 const cartReducer= (state = initState,action) => {
 
@@ -29,7 +30,8 @@ const cartReducer= (state = initState,action) => {
             addedItem.quantity += 1
             return {
                     ...state, 
-                    total: state.total + addedItem.price
+                    total: state.total + addedItem.price,
+                    totalQuantity: state.totalQuantity += 1
                 }
             }
         else {
@@ -38,7 +40,8 @@ const cartReducer= (state = initState,action) => {
             return {
                 ...state,
                 addedItems: [...state.addedItems, addedItem],
-                total: newTotal
+                total: newTotal,
+                totalQuantity: state.totalQuantity += 1
             }
         }
     }
@@ -61,7 +64,8 @@ const cartReducer= (state = initState,action) => {
           let newTotal = state.total + addedItem.price
           return{
               ...state,
-              total: newTotal
+              total: newTotal,
+              totalQuantity: state.totalQuantity += 1
           }
     }
 
@@ -74,7 +78,9 @@ const cartReducer= (state = initState,action) => {
             return{
                 ...state,
                 addedItems: new_items,
-                total: newTotal
+                total: newTotal,
+                totalQuantity: state.totalQuantity -= 1
+
             }
         }
         else {
@@ -82,18 +88,30 @@ const cartReducer= (state = initState,action) => {
             let newTotal = state.total - addedItem.price
             return{
                 ...state,
-                total: newTotal
+                total: newTotal,
+                totalQuantity: state.totalQuantity -= 1
             }
         }
     }
 
     if(action.type === ADD_DISCOUNT){
-        return { ...state, total: state.total * 0.8 }
+        let newDiscount = state.total * 0.2
+        let newTotal = state.total - newDiscount
+        return { 
+            ...state, 
+            discount: newDiscount,
+            total: newTotal
+        }
     }
 
     if(action.type === REMOVE_DISCOUNT){
-        return {...state, total: state.total / 0.8 }
+        let newTotal = state.total / 0.8
+        return {...state,
+            discount: 0,
+            total: newTotal
+        }
     }
+
     return state
 }
 

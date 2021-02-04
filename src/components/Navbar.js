@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class Navbar extends React.Component {
     
     render() {
-        console.log(this.props.addedItems)
+        console.log(this.props.totalQuantity)
         return(
             <nav className="navbar navbar-expand-sm navbar-light navbar-shopping">
                 <Link to="/" className="navbar-brand">Shopping</Link>
@@ -21,7 +21,7 @@ class Navbar extends React.Component {
                         <li 
                         className="nav-item">
                             <Link className="nav-link" to="/cart">
-                                My cart {this.props.addedItems.length}
+                                My cart {this.props.totalQuantity}
                                 <FontAwesomeIcon icon={faShoppingCart} />
                             </Link>
                         </li>
@@ -34,7 +34,7 @@ class Navbar extends React.Component {
 
 const mapStatetoProps = (state) => {
     return {
-        addedItems: state.cart.addedItems
+        totalQuantity: state.cart.totalQuantity
     }
 }
 

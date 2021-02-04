@@ -18,11 +18,11 @@ class Home extends React.Component {
                 <div className="card-image">
                     <img src={item.img} alt={item.title} />
                     <span className="card-title">{item.title}</span>
-                    <span 
-                        className="card-plusbutton" 
+                    <button 
+                        className="btn btn-success" 
                         onClick={()=>{this.handleClick(item.id)}}>
-                        <FontAwesomeIcon icon={faPlus} />
-                    </span>
+                        Add to basket
+                    </button>
                 </div>
 
                 <div className="card-content">

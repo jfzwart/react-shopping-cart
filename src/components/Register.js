@@ -18,6 +18,8 @@ class Register extends React.Component {
         }
     }
 
+    
+
     render(){
 
         let addedItems = this.props.addedItems.length ?
@@ -51,6 +53,7 @@ class Register extends React.Component {
 const mapStateToProps = (state) => {
     return{
         addedItems: state.cart.addedItems,
+        discount: state.cart.discount,
         total: state.cart.total
     }
 }

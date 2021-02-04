@@ -19,6 +19,7 @@ class Cart extends React.Component {
     handleSubtractQuantity = (id) => {
         this.props.subtractQuantity(id)
     }
+
     render(){
               
         let addedItems = this.props.items.length ?
@@ -34,7 +35,7 @@ class Cart extends React.Component {
                                     <div className="item-desc">
                                         <span className="title">{item.title}</span>
                                         <p>{item.desc}</p>
-                                        <p><b>Price: {item.price}$</b></p> 
+                                        <p><b>Price: {item.price}€</b></p> 
                                         <p>
                                             <b>Quantity: {item.quantity}</b> 
                                         </p>
@@ -43,7 +44,6 @@ class Cart extends React.Component {
                                             <Link to="/cart"><i className="btn btn-danger" onClick={()=>{this.handleSubtractQuantity(item.id)}}>-</i></Link>
                                         </div>
                                     </div>
-                                    
                                </li>                        
                     )
                 })
@@ -69,7 +69,8 @@ class Cart extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        items: state.cart.addedItems
+        items: state.cart.addedItems,
+        discountStatus: state.cart.discountStatus
     }
 }
 

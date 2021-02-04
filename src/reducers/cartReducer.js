@@ -18,7 +18,8 @@ const initState = {
     addedItems:[],
     totalQuantity: 0,
     total: 0,
-    discount: 0
+    discount: 0,
+    discountStatus: false
 }
 const cartReducer= (state = initState,action) => {
 
@@ -59,56 +60,102 @@ const cartReducer= (state = initState,action) => {
     }
 
     if(action.type=== ADD_QUANTITY){
-        let addedItem = state.items.find(item=> item.id === action.id)
-          addedItem.quantity += 1 
-          let newTotal = state.total + addedItem.price
-          return{
-              ...state,
-              total: newTotal,
-              totalQuantity: state.totalQuantity += 1
-          }
-    }
-
-    if(action.type=== SUB_QUANTITY){  
-        let addedItem = state.items.find(item=> item.id === action.id) 
-        //if the qt == 0 then it should be removed
-        if(addedItem.quantity === 1){
-            let new_items = state.addedItems.filter(item=>item.id !== action.id)
-            let newTotal = state.total - addedItem.price
+        let discountStatus = state.discountStatus
+        if(discountStatus){
+            let addedItem = state.items.find(item=> item.id === action.id)
+            addedItem.quantity += 1 
+            let newTotal = (state.total / 0.8) + addedItem.price
             return{
                 ...state,
-                addedItems: new_items,
+                discountStatus: false,
+                discount: 0,
                 total: newTotal,
-                totalQuantity: state.totalQuantity -= 1
-
+                totalQuantity: state.totalQuantity += 1
             }
         }
         else {
-            addedItem.quantity -= 1
-            let newTotal = state.total - addedItem.price
+            let addedItem = state.items.find(item=> item.id === action.id)
+            addedItem.quantity += 1 
+            let newTotal = state.total + addedItem.price
             return{
                 ...state,
+                discountStatus: false,
                 total: newTotal,
-                totalQuantity: state.totalQuantity -= 1
+                totalQuantity: state.totalQuantity += 1
+            }
+        }
+    }
+
+    if(action.type=== SUB_QUANTITY){  
+        let discountStatus = state.discountStatus
+        let addedItem = state.items.find(item=> item.id === action.id) 
+        //if the qt == 0 then it should be removed
+        if(discountStatus){
+            if(addedItem.quantity === 1){
+                let new_items = state.addedItems.filter(item=>item.id !== action.id)
+                let newTotal = (state.total / 0.8) - addedItem.price
+                return{
+                    ...state,
+                    discountStatus: false,
+                    discount: 0,
+                    addedItems: new_items,
+                    total: newTotal,
+                    totalQuantity: state.totalQuantity -= 1
+                }
+            }
+            else {
+                addedItem.quantity -= 1
+                let newTotal = (state.total / 0.8) - addedItem.price
+                return{
+                    ...state,
+                    discountStatus: false,
+                    discount: 0,
+                    total: newTotal,
+                    totalQuantity: state.totalQuantity -= 1
+                }
+            }
+        }
+        else {
+            if(addedItem.quantity === 1){
+                let new_items = state.addedItems.filter(item=>item.id !== action.id)
+                let newTotal = state.total - addedItem.price
+                return{
+                    ...state,
+                    discountStatus: false,
+                    addedItems: new_items,
+                    total: newTotal,
+                    totalQuantity: state.totalQuantity -= 1
+                }
+            }
+            else {
+                addedItem.quantity -= 1
+                let newTotal = state.total - addedItem.price
+                return{
+                    ...state,
+                    total: newTotal,
+                    totalQuantity: state.totalQuantity -= 1
+                }
             }
         }
     }
 
     if(action.type === ADD_DISCOUNT){
-        let newDiscount = state.total * 0.2
+        let newDiscount = (state.total * 0.2)
         let newTotal = state.total - newDiscount
         return { 
             ...state, 
             discount: newDiscount,
-            total: newTotal
+            total: newTotal,
+            discountStatus: true
         }
     }
 
     if(action.type === REMOVE_DISCOUNT){
-        let newTotal = state.total / 0.8
+        let newTotal = (state.total / 0.8)
         return {...state,
             discount: 0,
-            total: newTotal
+            total: newTotal,
+            discountStatus: false
         }
     }
 

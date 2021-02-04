@@ -9,13 +9,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 class Navbar extends React.Component {
     
     render() {
-        console.log(this.props.totalQuantity)
         return(
             <nav className="navbar navbar-expand-sm navbar-light navbar-shopping">
                 <Link to="/" className="navbar-brand">Shopping</Link>
-
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active"><Link className="nav-link" to="/">Shop</Link></li>
                         <li 

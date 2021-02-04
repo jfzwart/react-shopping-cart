@@ -4,10 +4,10 @@ import { addDiscount, removeDiscount } from '../actions/index';
 
 class Register extends React.Component {
 
-    componentWillUnmount() {
-        if(this.refs.discount.checked)
-            this.props.removeDiscount()
-    }
+    // componentWillUnmount() {
+    //     if(this.refs.discount.checked)
+    //         this.props.removeDiscount()
+    // }
 
     handleChecked = (e) => {
         if(e.target.checked){
@@ -19,9 +19,9 @@ class Register extends React.Component {
     }
 
     render(){
-        console.log(this.props.total)
-        
-        return(
+
+        let addedItems = this.props.addedItems.length ?
+        (  
             <div className="container">
                 <div className="collection">
                     <li className="collection-item">
@@ -36,6 +36,14 @@ class Register extends React.Component {
                         <button className="btn btn-success">Checkout</button>
                     </div>
                  </div>
+        ):
+
+         (
+            <p>Go to the shop to place your order</p>
+         )
+        
+        return(
+            <div>{addedItems}</div>
         )
     }
 }

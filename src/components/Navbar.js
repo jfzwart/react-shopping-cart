@@ -7,8 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 class Navbar extends React.Component {
+    
     render() {
-
         console.log(this.props.addedItems)
         return(
             <nav className="navbar navbar-expand-sm navbar-light navbar-shopping">
@@ -18,7 +18,13 @@ class Navbar extends React.Component {
                     
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item active"><Link className="nav-link" to="/">Shop</Link></li>
-                        <li className="nav-item"><Link className="nav-link" to="/cart">My cart {this.props.addedItems.length}<FontAwesomeIcon icon={faShoppingCart} /></Link></li>
+                        <li 
+                        className="nav-item">
+                            <Link className="nav-link" to="/cart">
+                                My cart {this.props.addedItems.length}
+                                <FontAwesomeIcon icon={faShoppingCart} />
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </nav>

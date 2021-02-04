@@ -1,4 +1,5 @@
 import React from 'react';
+import '../stylesheets/cart.css';
 import { connect } from 'react-redux';
 import { addDiscount, removeDiscount } from '../actions/index';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -22,7 +23,7 @@ class Register extends React.Component {
 
     renderDiscount() {
         if (this.props.discount) {
-            return `(incl.  ${this.props.discount.toFixed(2)} € discount)`
+            return `(incl. € ${this.props.discount.toFixed(2)} discount)`
         }
         return ''
     }
@@ -43,11 +44,12 @@ class Register extends React.Component {
                             <label>
                                 <div onClick= {this.handleChecked}>
                                 {this.renderCheckbox()}
-                                <span>Add discount(20%)</span>
+                                <span> Add discount (20%)</span>
                                 </div>
                             </label>
                         </li>
                         <li className="collection-item"><b>Total: {this.props.total.toFixed(2)} € {this.renderDiscount()}</b></li>
+                        <li className="collection-item"><b>Items: {this.props.totalQuantity}</b></li>
                     </div>
                     <div className="checkout">
                         <button className="btn btn-success">Checkout</button>
@@ -68,7 +70,8 @@ const mapStateToProps = (state) => {
         addedItems: state.cart.addedItems,
         discount: state.cart.discount,
         total: state.cart.total,
-        discountStatus: state.cart.discountStatus
+        discountStatus: state.cart.discountStatus,
+        totalQuantity: state.cart.totalQuantity
     }
 }
 

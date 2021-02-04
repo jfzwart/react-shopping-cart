@@ -1,5 +1,6 @@
 import React from 'react';
 import Register from './Register'
+import '../stylesheets/cart.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import { removeItem, addQuantity, subtractQuantity } from '../actions/index'
@@ -31,14 +32,11 @@ class Cart extends React.Component {
                                         <img src={item.img} alt={item.img} className=""/>
                                         <button className="btn btn-warning removebutton" onClick={()=>{this.handleRemove(item.id)}}><FontAwesomeIcon icon={faTimes} /></button>
                                     </div>
-                                
                                     <div className="item-desc">
-                                        <span className="title">{item.title}</span>
+                                        <h2 className="title">{item.title}</h2>
                                         <p>{item.desc}</p>
                                         <p><b>Price: {item.price}€</b></p> 
-                                        <p>
-                                            <b>Quantity: {item.quantity}</b> 
-                                        </p>
+                                        <p><b>Quantity: {item.quantity}</b></p>
                                         <div className="add-remove">
                                             <Link to="/cart"><i className="btn btn-success" onClick={()=>{this.handleAddQuantity(item.id)}}>+</i></Link>
                                             <Link to="/cart"><i className="btn btn-danger" onClick={()=>{this.handleSubtractQuantity(item.id)}}>-</i></Link>

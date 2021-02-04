@@ -1,4 +1,5 @@
 import React from 'react';
+import '../stylesheets/home.css';
 import { connect } from 'react-redux';
 import { addToCart } from '../actions/index'
 
@@ -30,7 +31,7 @@ class Home extends React.Component {
     })
         return(
             <div className="container">
-                <h3 className="center">Our items</h3>
+                <h3 className="center">Our items:</h3>
                 <div className="box">
                     {itemList}
                 </div>

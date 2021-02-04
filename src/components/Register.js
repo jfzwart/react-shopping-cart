@@ -4,10 +4,10 @@ import { addDiscount, removeDiscount } from '../actions/index';
 
 class Register extends React.Component {
 
-    // componentWillUnmount() {
-    //     if(this.refs.discount.checked)
-    //         this.props.removeDiscount()
-    // }
+    componentWillUnmount() {
+        if(this.props.discount)
+             this.props.removeDiscount()
+    }
 
     handleChecked = (e) => {
         if(e.target.checked){
@@ -18,6 +18,13 @@ class Register extends React.Component {
         }
     }
 
+    renderDiscount() {
+        if (this.props.discount) {
+            return 'discount'
+        }
+
+        return 'no discount'
+    }
     
 
     render(){
@@ -32,7 +39,7 @@ class Register extends React.Component {
                                 <span>Discount(20%)</span>
                             </label>
                         </li>
-                        <li className="collection-item"><b>Total: {this.props.total} $</b></li>
+                        <li className="collection-item"><b>Total: {this.props.total} $ {this.renderDiscount()}</b></li>
                     </div>
                     <div className="checkout">
                         <button className="btn btn-success">Checkout</button>
@@ -60,10 +67,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        addDiscount: () => { dispatch( {type: 'ADD_DISCOUNT'} )},
-        removeDiscount: () => { dispatch( { type: 'REMOVE_DISCOUNT'} )}
+        addDiscount: () => { dispatch(addDiscount()) },
+        removeDiscount: () => { dispatch(removeDiscount()) }
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

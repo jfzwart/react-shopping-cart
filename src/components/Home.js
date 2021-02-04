@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { addToCart } from '../actions/index'
 
 class Home extends React.Component {

@@ -32,7 +32,7 @@ export const addDiscount = () => {
     }
 }
 
-export const RemoveDiscount = () => {
+export const removeDiscount = () => {
     return {
         type: REMOVE_DISCOUNT,
     }

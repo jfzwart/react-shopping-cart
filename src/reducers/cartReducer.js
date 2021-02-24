@@ -64,7 +64,7 @@ const cartReducer= (state = initState,action) => {
         }
     }
 
-// increment the quantity and base the price on added discount or not
+// increment the quantity and base the price on added discount or not. If discount if added before incrementing or reducing the quantity. Remove the discount first.
     if(action.type=== ADD_QUANTITY){
         let discountStatus = state.discountStatus
         if(discountStatus){

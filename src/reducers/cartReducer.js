@@ -6,6 +6,7 @@ import Item5 from '../images/cocktail5.jpg'
 import Item6 from '../images/cocktail6.jpg'
 import { ADD_TO_CART, REMOVE_ITEM, SUB_QUANTITY, ADD_QUANTITY, ADD_DISCOUNT, REMOVE_DISCOUNT } from '../actions/types'
 
+// created an object that contains the items, as well as an empty shopping cart, quantities and price
 const initState = {
     items: [
         {id:1,title:'Winter', desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, ex.", price:9,img:Item1},
@@ -21,8 +22,9 @@ const initState = {
     discount: 0,
     discountStatus: false
 }
-const cartReducer= (state = initState,action) => {
 
+const cartReducer= (state = initState,action) => {
+// checks if the item is already in the shopping cart, if not add it, if yes increment the quantity and price
     if(action.type === ADD_TO_CART){
         let addedItem = state.items.find((item) => item.id === action.id )
         let existedItem = state.addedItems.find((item) => action.id === item.id )
@@ -47,6 +49,7 @@ const cartReducer= (state = initState,action) => {
         }
     }
 
+// find the item that needs to be removed, filter for the items that are remaining, create a new total price and quantity
     if(action.type === REMOVE_ITEM){
         let itemToRemove= state.addedItems.find(item=> action.id === item.id)
         let new_items = state.addedItems.filter(item=> action.id !== item.id)
@@ -61,6 +64,7 @@ const cartReducer= (state = initState,action) => {
         }
     }
 
+// increment the quantity and base the price on added discount or not
     if(action.type=== ADD_QUANTITY){
         let discountStatus = state.discountStatus
         if(discountStatus){

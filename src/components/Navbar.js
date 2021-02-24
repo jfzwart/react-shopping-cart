@@ -23,7 +23,7 @@ class Navbar extends React.Component {
                         </li>
                     </ul>
             </nav>
-        )
+        ) // standard navbar, links to home, and the shopping cart. Shopping cart takes state from the store to render the total quantity
     }
 }
 

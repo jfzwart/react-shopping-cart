@@ -1,5 +1,6 @@
 import { ADD_TO_CART, REMOVE_ITEM, SUB_QUANTITY, ADD_QUANTITY, ADD_DISCOUNT, REMOVE_DISCOUNT } from './types';
 
+// list all action types, return type and ID
 export const addToCart= (id) => { 
     return {
         type: ADD_TO_CART,

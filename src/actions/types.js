@@ -4,3 +4,4 @@ export const SUB_QUANTITY = 'SUB_QUANTITY';
 export const ADD_QUANTITY = 'ADD_QUANTITY';
 export const ADD_DISCOUNT = 'ADD_DISCOUNT';
 export const REMOVE_DISCOUNT = 'REMOVE_DISCOUNT';
+// Create easier naming

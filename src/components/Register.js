@@ -9,8 +9,8 @@ class Register extends React.Component {
 
     componentWillUnmount() {
         if(this.props.discount)
-             this.props.removeDiscount()
-    }
+            this.props.removeDiscount()
+    } // remove discount on unmount
 
     handleChecked = () => {
         if(!this.props.discount){
@@ -19,21 +19,21 @@ class Register extends React.Component {
         else{
             this.props.removeDiscount();
         }
-    }
+    } // if no discount is added, add discount on checkmark, else remove upon uncheck
 
     renderDiscount() {
         if (this.props.discount) {
             return `(incl. € ${this.props.discount.toFixed(2)} discount)`
         }
         return ''
-    }
+    }   // render discount if discount is checked
 
     renderCheckbox() {
         if (this.props.discountStatus) {
             return <FontAwesomeIcon icon={faCheckSquare} />
         }
         return <FontAwesomeIcon icon={faSquare} />
-    }
+    } // render icon on check or no check
     
     render(){
         let addedItems = this.props.addedItems.length ?
@@ -54,11 +54,11 @@ class Register extends React.Component {
                     <div className="checkout">
                         <button className="btn btn-success">Checkout</button>
                     </div>
-                 </div>
+                </div>
         ):
-         (
-            <p>Go to the shop to place your order</p>
-         )  
+        (
+        <p>Go to the shop to place your order</p>
+        )  
         return(
             <div>{addedItems}</div>
         )
@@ -80,6 +80,6 @@ const mapDispatchToProps = (dispatch) => {
         addDiscount: () => { dispatch(addDiscount()) },
         removeDiscount: () => { dispatch(removeDiscount()) }
     }
-}
+} // two action types are needed add and remove discount
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

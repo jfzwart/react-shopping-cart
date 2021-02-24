@@ -7,7 +7,7 @@ class Home extends React.Component {
 
     handleClick = (id) => {
         this.props.addToCart(id);
-    }
+    } // add item to shopping cart
 
     render() {
         let itemList = this.props.items.map(item => {
@@ -28,7 +28,7 @@ class Home extends React.Component {
                 </div>
             </div>
         )
-    })
+    }) // create a list of items from the reducer object. Creates cards with Image, Price, Title and Description
         return(
             <div className="container">
                 <h3 className="center">Our items:</h3>
@@ -36,7 +36,7 @@ class Home extends React.Component {
                     {itemList}
                 </div>
             </div>
-        )
+        ) // return complete list of items
     }
 }
 
@@ -50,6 +50,6 @@ const mapDispatchToProps = (dispatch) => {
     return { 
         addToCart: (id) => { dispatch(addToCart(id)) }     
     }
-}
+} // only one dispatch function is needed, adding items to the cart. 
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Home);

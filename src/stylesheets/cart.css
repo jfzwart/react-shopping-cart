@@ -9,7 +9,6 @@
 
 .add-remove {
   display: flex;
-  justify-content: end;
   flex-direction: row-reverse;
   position: relative;
   align-items: last baseline;
